@@ -4,10 +4,9 @@ import { CommonModule } from '@angular/common';
 import { JaxAutocompleteComponent } from "../autocomplete/jax-autocomplete/jax-autocomplete.component";
 
 @Component({
-  selector: 'ng-jax-components-jax-components',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './jax-components.component.html',
-  styleUrl: './jax-components.component.css',
+    selector: 'ng-jax-components-jax-components',
+    imports: [CommonModule],
+    templateUrl: './jax-components.component.html',
+    styleUrl: './jax-components.component.css'
 })
 export class JaxComponentsComponent {}
