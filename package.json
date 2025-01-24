@@ -4,8 +4,10 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "build": "nx run-many -t build --parallel",
+    "test": "nx run-many -t test --parallel",
+    "lint": "nx run-many -t lint --parallel",
+    "e2e": "nx run-many -t e2e"
   },
   "private": true,
   "dependencies": {
