@@ -5,8 +5,9 @@ import { JaxAutocompleteComponent } from "../autocomplete/jax-autocomplete/jax-a
 
 @Component({
     selector: 'ng-jax-components-jax-components',
-    imports: [CommonModule],
+    imports: [CommonModule, JaxAutocompleteComponent],
     templateUrl: './jax-components.component.html',
-    styleUrl: './jax-components.component.css'
+    styleUrl: './jax-components.component.css',
+    standalone: true
 })
 export class JaxComponentsComponent {}
