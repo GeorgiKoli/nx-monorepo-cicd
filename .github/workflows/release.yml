@@ -1,29 +1,21 @@
-name: Publish
-
-env:
-    NODE_VERSION: 20
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
+name: RELEASE
+on: [workflow_dispatch]
 jobs:
-  publish:
+  main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v2
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v3
+      - name: Install deps
+        run: npm ci
+      - name: Lint
+        run: npx nx run-many -t lint
+      - name: Test
+        run: npx nx run-many -t test --configuration=ci
       - name: Release
+        run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish
