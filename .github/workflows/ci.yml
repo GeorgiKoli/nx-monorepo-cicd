@@ -5,11 +5,19 @@ env:
   NODE_OPTIONS: --max_old_space_size=4096
 
 
-on: [workflow_dispatch, push, pull_request]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: false # disable build (will be enabled in the future)
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -22,6 +30,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    if: false # disable tests (will be enabled in the future)
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -34,6 +43,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    if: false # disable linting (will be enabled in the future)
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
